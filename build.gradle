@@ -1,0 +1,114 @@
+apply plugin: 'java'
+apply plugin: 'jetty'
+
+version = '1.0-SNAPSHOT'
+group = 'com.github.mtzw'
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+configurations {
+  compile {
+    exclude module: 'commons-logging'
+  }
+  provided
+  domaGenRuntime
+}
+
+sourceSets {
+  main {
+    java {
+      srcDir 'src/main/java'
+    }
+    resources {
+      srcDir 'src/main/resources'
+      srcDir 'src/main/java'
+    }
+    compileClasspath += configurations.provided
+  }
+  test {
+    compileClasspath += configurations.provided
+    runtimeClasspath += configurations.provided
+  }
+}
+
+processResources.destinationDir = compileJava.destinationDir
+compileJava.dependsOn processResources
+
+compileJava {
+  options.encoding = 'UTF-8'
+}
+
+compileTestJava {
+  options.encoding = 'UTF-8'
+}
+
+task wrapper(type: Wrapper) {
+  gradleVersion = '2.0'
+}
+
+// doma-gen
+task gen << {
+  ant.taskdef(resource: 'domagentask.properties',
+    classpath: configurations.domaGenRuntime.asPath)
+  ant.gen(url: 'jdbc:h2:file:demo', user: 'sa', password: '') {
+    entityConfig(
+      packageName: 'com.github.mtzw.app.entity'
+    )
+    daoConfig(
+      packageName: 'com.github.mtzw.app.dao',
+      configClassName: 'boilerplate.AppConfig'
+    )
+    sqlConfig()
+  }
+}
+
+task genTestCases << {
+  ant.taskdef(resource: 'domagentask.properties',
+    classpath: configurations.domaGenRuntime.asPath)
+  ant.gen(url: 'jdbc:h2:file:./demo', user: 'sa', password: '') {
+    sqlTestCaseConfig {
+      fileset(dir: 'src/main/resources') {
+        include(name: 'META-INF/**/*.sql')
+      }
+    }
+  }
+}
+//
+
+repositories {
+  mavenCentral()
+  mavenLocal()
+  maven {
+    url 'http://maven.seasar.org/maven2/'
+    url 'https://oss.sonatype.org/content/repositories/snapshots/'
+  }
+}
+
+dependencies {
+  compile 'org.seasar.doma:doma:2.0.0'
+  compile 'org.seasar.container:s2-framework:2.4.47'
+  compile 'org.seasar.container:s2-extension:2.4.47'
+  compile 'org.seasar.container:s2-tiger:2.4.47'
+  compile 'org.seasar.wicket:s2wicket:6.16.0'
+  compile 'ch.qos.logback:logback-classic:1.1.2'
+
+  runtime 'org.apache.geronimo.specs:geronimo-annotation_1.0_spec:1.0'
+  runtime 'org.apache.geronimo.specs:geronimo-ejb_3.0_spec:1.0'
+  runtime 'org.apache.geronimo.specs:geronimo-interceptor_3.0_spec:1.0'
+  runtime 'org.apache.geronimo.specs:geronimo-jpa_3.0_spec:1.0'
+  runtime 'org.apache.geronimo.specs:geronimo-jta_1.1_spec:1.0'
+  runtime 'com.h2database:h2:1.4.179'
+
+  domaGenRuntime 'org.seasar.doma:doma-gen:2.0.0'
+  domaGenRuntime 'com.h2database:h2:1.4.179'
+
+  provided 'javax.servlet:javax.servlet-api:3.1.0'
+  provided 'org.eclipse.jetty.websocket:websocket-server:9.2.0.v20140526'
+  provided 'org.eclipse.jetty:jetty-webapp:9.2.0.v20140526'
+
+  testCompile 'org.mockito:mockito-core:1.9.5'
+  testCompile 'junit:junit:4.11'
+}
+
+apply from:'eclipse.gradle'
