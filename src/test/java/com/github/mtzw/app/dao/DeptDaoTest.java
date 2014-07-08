@@ -45,7 +45,7 @@ public class DeptDaoTest extends TestCase {
         Class<Driver> driverClass = (Class<Driver>) Class.forName("org.h2.Driver");
         driver = driverClass.newInstance();
         DriverManager.registerDriver(driver);
-        url = "jdbc:h2:file:demo";
+        url = "jdbc:h2:file:./demo";
         user = "sa";
         password = "";
     }

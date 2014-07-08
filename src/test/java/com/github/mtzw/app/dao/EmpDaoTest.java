@@ -45,7 +45,7 @@ public class EmpDaoTest extends TestCase {
         Class<Driver> driverClass = (Class<Driver>) Class.forName("org.h2.Driver");
         driver = driverClass.newInstance();
         DriverManager.registerDriver(driver);
-        url = "jdbc:h2:file:demo";
+        url = "jdbc:h2:file:./demo";
         user = "sa";
         password = "";
     }
@@ -111,8 +111,8 @@ public class EmpDaoTest extends TestCase {
      * 
      * @throws Exception
      */
-    public void testSelectByIdAndVersion() throws Exception {
-        SqlFile sqlFile = repository.getSqlFile(getMethod(), "META-INF/com/github/mtzw/app/dao/EmpDao/selectByIdAndVersion.sql", dialect);
+    public void testSelectAll() throws Exception {
+        SqlFile sqlFile = repository.getSqlFile(getMethod(), "META-INF/com/github/mtzw/app/dao/EmpDao/selectAll.sql", dialect);
         execute(sqlFile);
     }
 
@@ -120,8 +120,8 @@ public class EmpDaoTest extends TestCase {
      * 
      * @throws Exception
      */
-    public void testSelectAll() throws Exception {
-        SqlFile sqlFile = repository.getSqlFile(getMethod(), "META-INF/com/github/mtzw/app/dao/EmpDao/selectAll.sql", dialect);
+    public void testSelectByIdAndVersion() throws Exception {
+        SqlFile sqlFile = repository.getSqlFile(getMethod(), "META-INF/com/github/mtzw/app/dao/EmpDao/selectByIdAndVersion.sql", dialect);
         execute(sqlFile);
     }
 
