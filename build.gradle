@@ -48,10 +48,14 @@ task wrapper(type: Wrapper) {
 }
 
 // doma-gen
+def db_url = 'jdbc:h2:file:./demo'
+def db_user = 'sa'
+def db_password = ''
+
 task gen << {
   ant.taskdef(resource: 'domagentask.properties',
     classpath: configurations.domaGenRuntime.asPath)
-  ant.gen(url: 'jdbc:h2:file:demo', user: 'sa', password: '') {
+  ant.gen(url: db_url, user: db_user, password: db_password) {
     entityConfig(
       packageName: 'com.github.mtzw.app.entity'
     )
@@ -66,7 +70,7 @@ task gen << {
 task genTestCases << {
   ant.taskdef(resource: 'domagentask.properties',
     classpath: configurations.domaGenRuntime.asPath)
-  ant.gen(url: 'jdbc:h2:file:./demo', user: 'sa', password: '') {
+  ant.gen(url: db_url, user: db_user, password: db_password) {
     sqlTestCaseConfig {
       fileset(dir: 'src/main/resources') {
         include(name: 'META-INF/**/*.sql')
@@ -104,8 +108,8 @@ dependencies {
   domaGenRuntime 'com.h2database:h2:1.4.179'
 
   provided 'javax.servlet:javax.servlet-api:3.1.0'
-  provided 'org.eclipse.jetty.websocket:websocket-server:9.2.0.v20140526'
-  provided 'org.eclipse.jetty:jetty-webapp:9.2.0.v20140526'
+  provided 'org.eclipse.jetty.websocket:websocket-server:9.2.1.v20140609'
+  provided 'org.eclipse.jetty:jetty-webapp:9.2.1.v20140609'
 
   testCompile 'org.mockito:mockito-core:1.9.5'
   testCompile 'junit:junit:4.11'
