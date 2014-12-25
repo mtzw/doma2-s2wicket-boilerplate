@@ -26,7 +26,7 @@ import org.seasar.doma.jdbc.tx.TransactionManager;
 import boilerplate.AppConfig;
 
 import com.github.mtzw.app.dao.EmpDao;
-import com.github.mtzw.app.dao.EmpDaoImpl;
+import com.github.mtzw.app.dao.impl.EmpDaoImpl;
 
 /**
  * Homepage
