@@ -24,11 +24,11 @@ sourceSets {
       srcDir 'src/main/resources'
       srcDir 'src/main/java'
     }
-    compileClasspath += configurations.provided
+    compileClasspath += [configurations.provided]
   }
   test {
-    compileClasspath += configurations.provided
-    runtimeClasspath += configurations.provided
+    compileClasspath += [configurations.provided]
+    runtimeClasspath += [configurations.provided]
   }
 }
 
@@ -56,7 +56,7 @@ repositories {
 }
 
 dependencies {
-  compile 'org.seasar.doma:doma:2.1.0'
+  compile 'org.seasar.doma:doma:2.2.0'
   compile 'org.seasar.container:s2-framework:2.4.48'
   compile 'org.seasar.container:s2-extension:2.4.48'
   compile 'org.seasar.container:s2-tiger:2.4.48'
@@ -70,7 +70,7 @@ dependencies {
   runtime 'org.apache.geronimo.specs:geronimo-jta_1.1_spec:1.0'
   runtime 'com.h2database:h2:1.4.179'
 
-  domaGenRuntime 'org.seasar.doma:doma-gen:2.1.0'
+  domaGenRuntime 'org.seasar.doma:doma-gen:2.2.0'
   domaGenRuntime 'com.h2database:h2:1.4.179'
 
   provided 'javax.servlet:javax.servlet-api:3.1.0'

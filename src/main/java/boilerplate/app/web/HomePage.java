@@ -14,7 +14,7 @@
  * governing permissions and limitations under the License.
  */
 
-package com.github.mtzw.app.web;
+package boilerplate.app.web;
 
 import java.util.stream.Collectors;
 
@@ -24,9 +24,8 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.seasar.doma.jdbc.tx.TransactionManager;
 
 import boilerplate.AppConfig;
-
-import com.github.mtzw.app.dao.EmpDao;
-import com.github.mtzw.app.dao.impl.EmpDaoImpl;
+import boilerplate.app.dao.EmpDao;
+import boilerplate.app.dao.impl.EmpDaoImpl;
 
 /**
  * Homepage

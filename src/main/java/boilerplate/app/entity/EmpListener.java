@@ -1,4 +1,4 @@
-package com.github.mtzw.app.entity;
+package boilerplate.app.entity;
 
 import org.seasar.doma.jdbc.entity.EntityListener;
 import org.seasar.doma.jdbc.entity.PostDeleteContext;
@@ -9,7 +9,7 @@ import org.seasar.doma.jdbc.entity.PreInsertContext;
 import org.seasar.doma.jdbc.entity.PreUpdateContext;
 
 /**
- * 
+ *
  */
 public class EmpListener implements EntityListener<Emp> {
 

@@ -9,7 +9,7 @@
         <filter-class>org.seasar.wicket.S2WicketFilter</filter-class>
         <init-param>
             <param-name>applicationClassName</param-name>
-            <param-value>com.github.mtzw.app.web.WicketApplication</param-value>
+            <param-value>boilerplate.app.web.WicketApplication</param-value>
         </init-param>
         <init-param>
             <param-name>configuration</param-name>
@@ -21,7 +21,7 @@
         </init-param>
         <init-param>
             <param-name>reloadingClassPattern</param-name>
-            <param-value>com.github.mtzw.app.**</param-value>
+            <param-value>boilerplate.app.**</param-value>
         </init-param>
     </filter>
     <filter-mapping>

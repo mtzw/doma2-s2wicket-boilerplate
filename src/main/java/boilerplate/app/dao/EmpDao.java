@@ -1,4 +1,4 @@
-package com.github.mtzw.app.dao;
+package boilerplate.app.dao;
 
 import java.util.function.Function;
 import java.util.stream.Stream;
@@ -11,8 +11,7 @@ import org.seasar.doma.SelectType;
 import org.seasar.doma.Update;
 
 import boilerplate.AppConfig;
-
-import com.github.mtzw.app.entity.Emp;
+import boilerplate.app.entity.Emp;
 
 /**
  */

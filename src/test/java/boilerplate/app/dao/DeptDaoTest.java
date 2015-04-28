@@ -1,4 +1,4 @@
-package com.github.mtzw.app.dao;
+package boilerplate.app.dao;
 
 import java.lang.reflect.Method;
 import java.sql.Connection;
@@ -16,7 +16,7 @@ import org.seasar.doma.jdbc.dialect.Dialect;
 /**
  * 
  */
-public class EmpDaoTest extends TestCase {
+public class DeptDaoTest extends TestCase {
 
     /** */
     protected SqlFileRepository repository;
@@ -102,26 +102,17 @@ public class EmpDaoTest extends TestCase {
      * 
      * @throws Exception
      */
-    public void testSelectById() throws Exception {
-        SqlFile sqlFile = repository.getSqlFile(getMethod(), "META-INF/com/github/mtzw/app/dao/EmpDao/selectById.sql", dialect);
-        execute(sqlFile);
-    }
-
-    /**
-     * 
-     * @throws Exception
-     */
-    public void testSelectAll() throws Exception {
-        SqlFile sqlFile = repository.getSqlFile(getMethod(), "META-INF/com/github/mtzw/app/dao/EmpDao/selectAll.sql", dialect);
-        execute(sqlFile);
-    }
-
-    /**
-     * 
-     * @throws Exception
-     */
     public void testSelectByIdAndVersion() throws Exception {
-        SqlFile sqlFile = repository.getSqlFile(getMethod(), "META-INF/com/github/mtzw/app/dao/EmpDao/selectByIdAndVersion.sql", dialect);
+        SqlFile sqlFile = repository.getSqlFile(getMethod(), "META-INF/boilerplate/app/dao/DeptDao/selectByIdAndVersion.sql", dialect);
+        execute(sqlFile);
+    }
+
+    /**
+     * 
+     * @throws Exception
+     */
+    public void testSelectById() throws Exception {
+        SqlFile sqlFile = repository.getSqlFile(getMethod(), "META-INF/boilerplate/app/dao/DeptDao/selectById.sql", dialect);
         execute(sqlFile);
     }
 

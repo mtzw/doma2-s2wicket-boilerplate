@@ -1,12 +1,13 @@
-package com.github.mtzw.app.dao;
+package boilerplate.app.dao;
 
-import boilerplate.AppConfig;
-import com.github.mtzw.app.entity.Dept;
 import org.seasar.doma.Dao;
 import org.seasar.doma.Delete;
 import org.seasar.doma.Insert;
 import org.seasar.doma.Select;
 import org.seasar.doma.Update;
+
+import boilerplate.AppConfig;
+import boilerplate.app.entity.Dept;
 
 /**
  */
